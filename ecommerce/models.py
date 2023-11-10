@@ -30,6 +30,9 @@ class OrderItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
+    def get_total_price(self):
+        return self.quantity * Item.price
+
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
 
@@ -41,8 +44,7 @@ class Order(models.Model):
     order_date = models.DateTimeField()
     ordered = models.BooleanField(default=False)
 
-    def total(self):
-        return self.quantity * Item.price
+
 
     def __str__(self):
         return self.user.username
