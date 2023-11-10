@@ -3,6 +3,7 @@ from django.views.generic import DetailView, ListView
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from .models import Item, OrderItem, Order
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -28,9 +29,10 @@ class ItemDetailView(DetailView):
     template_name = "product.html"
     context_object_name = "product"
 
+@login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
-    order_item = OrderItem.objects.create(
+    order_item, created = OrderItem.objects.get_or_create(
         item=item,
         ordered=False,
         user=request.user
@@ -50,13 +52,13 @@ def add_to_cart(request, slug):
         order.items.add(order_item)
     return redirect("ecommerce:product", slug=slug)
 
-
+@login_required
 def show_cart(request, *args, **kwargs):
     user = request.user
     try:
         cart = Order.objects.get( ordered=False)
         context = {
-            'object': Order
+            'object': cart
         }
         return render(request, 'cart.html', context)
     except ObjectDoesNotExist:
