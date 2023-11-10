@@ -1,0 +1,5 @@
+.carousel-item {
+    height: 200px;
+    z-index: -1;
+    object-fit: contain;
+  } 
