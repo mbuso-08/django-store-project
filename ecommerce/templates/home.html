@@ -34,11 +34,11 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent1">
       <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-sm-0" href="https://mdbootstrap.com/">
+      <a class="navbar-brand mt-2 mt-sm-0" href="{% url 'ecommerce:home' %}">
         <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+          src="{% static 'ecommerce/images/store-icon.svg' %}"
           height="20"
-          alt="MDB Logo"
+          alt="Store Logo"
           loading="lazy"
         />
       </a>
