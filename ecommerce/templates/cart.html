@@ -183,9 +183,9 @@
                     <p class="mb-0">(including VAT)</p>
                   </strong>
                 </div>
-                {% for item in object.items.all %}
-                <span><strong>{{ order_item.get_total_price }}</strong></span>
-                {% endfor %}
+                {% comment %} {% for item in object.items.all %} {% endcomment %}
+                <span><strong>R6500.59{{ total_price }}</strong></span>
+                {% comment %} {% endfor %} {% endcomment %}
               </li>
             </ul>
 
