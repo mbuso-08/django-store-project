@@ -184,7 +184,7 @@
                   </strong>
                 </div>
                 {% comment %} {% for item in object.items.all %} {% endcomment %}
-                <span><strong>R6500.59{{ total_price }}</strong></span>
+                <span><strong>R{{ get_total_price_url }}</strong></span>
                 {% comment %} {% endfor %} {% endcomment %}
               </li>
             </ul>

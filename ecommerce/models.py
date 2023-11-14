@@ -35,7 +35,7 @@ class OrderItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
-    def get_total_price(self):
+    def get_total_price_url(self):
         return self.quantity * Item.price
 
     def __str__(self):
