@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from .models import Item, OrderItem, Order
 from django.contrib.auth.decorators import login_required
+from .forms import CheckoutForm
 
 # Create your views here.
 
@@ -90,3 +91,16 @@ def show_cart(request, *args, **kwargs):
         messages.error(request, "You do not have an active order")
         return redirect("/")
 
+class CheckoutView(DetailView):
+    def get(self, *args, **kwargs):
+        form = CheckoutForm
+        context = {
+            'form': form
+        }
+        return render(self.request, "checkout.html", context)
+    
+    def post(self, *args, **kwargs):
+        form = CheckoutForm(self.request.POST or None)
+        if form.is_valid():
+            print("the form is valid")
+            return redirect('ecommerce:checkout')

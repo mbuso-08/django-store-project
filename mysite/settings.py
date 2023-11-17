@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'ecommerce',
     'sorl.thumbnail',
+    'django_countries',
 
     'django.contrib.sites',
     'allauth',
