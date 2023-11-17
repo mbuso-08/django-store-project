@@ -27,6 +27,13 @@ class Item(models.Model):
         return reverse("ecommerce:remove_from_cart", kwargs={
             'slug':self.slug
         })
+    
+    def get_checkout_url(self):
+        return reverse("ecommerce:checkout", kwargs={
+        'slug':self.slug
+    })
+
+
 
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,

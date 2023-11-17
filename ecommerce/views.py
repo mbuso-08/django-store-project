@@ -82,10 +82,10 @@ def show_cart(request, *args, **kwargs):
             'object': cart
         }
         amount = 0
-        for item in cart:
-            value = item.quantity * item.price
-            amount = amount + value
-            total_price = amount + 90
+        # for item in cart:
+        #     value = item.quantity * item.price
+        #     amount = amount + value
+        #     total_price = amount + 90
         return render(request, 'cart.html', context)
     except ObjectDoesNotExist:
         messages.error(request, "You do not have an active order")
